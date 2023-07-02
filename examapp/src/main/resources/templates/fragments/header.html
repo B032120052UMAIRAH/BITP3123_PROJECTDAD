@@ -1,0 +1,56 @@
+<header th:fragment="header">
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" th:href="@{/student/list}">
+      Student Information
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="topNavbar">
+      <ul class="navbar-nav">
+      
+      	<!-- A menu link to lists order types -->
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/academicadvisor/list}">Academic Advisor</a>
+        </li>
+        
+        <!-- A menu link to add a new order type -->
+        <!-- <li class="nav-item">
+          <a class="nav-link" th:href="@{/ordertype/0}">Add New Order Type</a>
+        </li> -->
+        
+       <!-- A menu link to lists order types -->
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/attendance/list}">Attendance Method</a>
+        </li>
+        
+        <!-- A menu link to lists order types -->
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/subjectregistration/list}">Subject Registrations</a>
+        </li>
+        
+                <!-- A menu link to lists order types -->
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/exam/list}">Examination</a>
+        </li>
+        
+        <!-- A menu link to lists order types -->
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/studentattendance/list}">Student Attendances</a>
+        </li>
+        
+        <!-- A menu link to add a new order type -->
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/studentattendance/0}">Add New Student</a>
+        </li>
+        
+
+        
+        
+        
+        
+      </ul>
+    </div>
+  </nav>
+</header>
