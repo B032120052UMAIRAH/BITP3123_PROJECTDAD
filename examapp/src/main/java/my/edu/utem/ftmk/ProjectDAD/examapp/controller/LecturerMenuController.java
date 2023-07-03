@@ -17,6 +17,13 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.model.Lecturer;
  * B032120052 - Umairah
 */
 
+/**
+ * This Menu Controller Class for List Lecturer
+ * 
+ * @author Imran
+ *
+ */
+
 @Controller
 public class LecturerMenuController {
 

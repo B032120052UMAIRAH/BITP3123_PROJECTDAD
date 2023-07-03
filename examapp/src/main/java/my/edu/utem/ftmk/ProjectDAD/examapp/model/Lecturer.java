@@ -5,6 +5,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * This model class to provoke set and get attribute 
+ * for table Lecturer
+ * 
+ * @author Group 18
+ *
+ */
+
 @Entity
 @Table(name = "lecturer")
 public class Lecturer {

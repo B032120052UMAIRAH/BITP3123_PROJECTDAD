@@ -15,6 +15,12 @@ import org.springframework.web.client.RestTemplate;
 
 import my.edu.utem.ftmk.ProjectDAD.examapp.model.SubjectRegistration;
 
+/**
+ * This Menu Controller Class for List Subject Registration
+ * 
+ * @author Umairah
+ *
+ */
 @Controller
 public class SubjectRegistrationMenuController {
 

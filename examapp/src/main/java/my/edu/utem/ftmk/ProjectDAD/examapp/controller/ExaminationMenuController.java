@@ -18,6 +18,13 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.model.Examination;
  * B032120040 - Syazwina
 */
 
+/**
+ * This Menu Controller Class for List Examination
+ * 
+ * @author Syazwina
+ *
+ */
+
 @Controller
 public class ExaminationMenuController {
 	@GetMapping("/exam/list")

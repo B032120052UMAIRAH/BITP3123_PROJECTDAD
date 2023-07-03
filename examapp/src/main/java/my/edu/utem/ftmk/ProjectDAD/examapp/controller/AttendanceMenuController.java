@@ -11,12 +11,12 @@ import org.springframework.web.client.RestTemplate;
 
 import my.edu.utem.ftmk.ProjectDAD.examapp.model.Attendance;
 
-/*CREATE BY GROUP 18
- * B032120025 - Imran
- * B032120040 - Syazwina
- * B032120052 - Umairah
-*/
-
+/**
+ * This Menu Controller Class for List Attendances
+ * 
+ * @author Syazwina
+ *
+ */
 @Controller
 public class AttendanceMenuController {
 

@@ -45,14 +45,14 @@ public class ExamScheduleRESTController {
 		return examSchedule;
 	}
 	
-	//insert exam
+	//insert exam schedule
 	@PostMapping
 	public ExamSchedule insertExamSchedule(@RequestBody ExamSchedule examSchedule)
 	{
 		return examScheduleRepository.save(examSchedule);
 	}
 	
-	//update exam
+	//update exam schedule
 
 	@PutMapping
 	public ExamSchedule updateExamSchedule(@RequestBody ExamSchedule examSchedule)
@@ -60,7 +60,7 @@ public class ExamScheduleRESTController {
 		return examScheduleRepository.save(examSchedule);
 	}
 	
-	//delete exam
+	//delete exam schedule
 	@DeleteMapping("{exam_code}")
 	public ResponseEntity<HttpStatus> deleteExamSchedule(@PathVariable String exam_code)
 	{

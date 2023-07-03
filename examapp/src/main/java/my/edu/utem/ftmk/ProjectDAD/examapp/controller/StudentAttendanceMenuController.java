@@ -15,7 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
 import my.edu.utem.ftmk.ProjectDAD.examapp.model.StudentAttendance;
-
+/**
+ * This Menu Controller Class for Student Attendance
+ * 
+ * @author Umairah(B032120052)
+ *
+ */
 @Controller
 public class StudentAttendanceMenuController {
 	
@@ -39,7 +44,7 @@ public class StudentAttendanceMenuController {
 		//Parse array to a list object
 		List<StudentAttendance> studentAttendancesList = Arrays.asList(studentAttendances);
 		
-		//URI get order types
+		//URI get student attendances
 		String uri2 ="http://localhost:8080/examapp/api/studentattendances/absents";
 		//get list order types from web service
 		RestTemplate restTemplateAbsent = new RestTemplate();
@@ -52,10 +57,10 @@ public class StudentAttendanceMenuController {
 		//Parse array to a list object
      	List<StudentAttendance> studentAttendancesAbsentList = Arrays.asList(studentAttendancesAbsent);
 		
-     	//URI get order types
+     	//URI get student attendances
      	String uri3 ="http://localhost:8080/examapp/api/studentattendances/presents";
      			
-     	//get list order types from web service
+     	//get list student attendances from web service
      	RestTemplate restTemplatePresent = new RestTemplate();
      	ResponseEntity<StudentAttendance[]> responsePresent = 
      			restTemplatePresent.getForEntity(uri3, StudentAttendance[].class);
@@ -76,7 +81,7 @@ public class StudentAttendanceMenuController {
 	}
 	
 	/**
-	 * This method will update or add an order type
+	 * This method will update or add an student attendances
 	 * @param Student Attendance
 	 * @return
 	 */
@@ -91,19 +96,19 @@ public class StudentAttendanceMenuController {
 		String studentAttendanceResponse ="";
 		
 		if(studentAttendance.getAttendance_ID()>0) {
-			//block update an new order type
+			//block update an new student attendances
 			//send req as PUT
 			restTemplate.put("http://localhost:8080/examapp/api/studentattendances", request, StudentAttendance.class);
 			
 		}else {
-			//block add an new order type
+			//block add an new student attendances
 			//send req as PUT
 
 			studentAttendanceResponse = restTemplate.postForObject("http://localhost:8080/examapp/api/studentattendances", request, String.class);
 		}
 		System.out.println(studentAttendanceResponse);
 		
-		//redirect req to display a list order type
+		//redirect req to display a list student attendances
 		return "redirect:/studentattendance/list";
 		
 	}

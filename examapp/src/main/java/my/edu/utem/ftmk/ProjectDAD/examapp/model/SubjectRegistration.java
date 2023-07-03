@@ -1,5 +1,12 @@
 package my.edu.utem.ftmk.ProjectDAD.examapp.model;
 
+/**
+ * This model class to provoke set and get attribute 
+ * for table subject registration
+ * 
+ * @author Group 18
+ *
+ */
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,15 +26,20 @@ public class SubjectRegistration {
 		// TODO Auto-generated constructor stub
 	}
 
+	//auto increment for new data
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "subjReg_ID")
 	private int subjReg_ID;
 	
+	//FK for subject registration  
+	//join the subject registration table and student table
 	@ManyToOne
     @JoinColumn(name="matricno")
     private Student matricno;
 	
+	//FK for subject registration  
+	//join the subject registration table and subject table
 	@ManyToOne
     @JoinColumn(name="subject_code")
     private Subject subject_code;

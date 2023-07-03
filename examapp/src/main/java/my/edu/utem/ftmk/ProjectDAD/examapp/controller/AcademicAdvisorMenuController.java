@@ -17,9 +17,17 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.model.AcademicAdvisor;
  * B032120052 - Umairah
 */
 
+/**
+ * This Menu Controller Class for List Academic Advisor
+ * 
+ * @author Syazwina
+ *
+ */
 @Controller
 public class AcademicAdvisorMenuController {
 
+	//The method is annotated with @GetMapping("/academicadvisor/list"), 
+	//indicating that it handles GET requests to the "/academicadvisor/list" endpoint.
 	@GetMapping("/academicadvisor/list")
 	public String getAcademicAdvisors(Model model){
 		

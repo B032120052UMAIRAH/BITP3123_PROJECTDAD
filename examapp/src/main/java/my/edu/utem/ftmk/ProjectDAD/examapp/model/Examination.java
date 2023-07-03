@@ -12,11 +12,19 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+/**
+ * This model class to provoke set and get attribute 
+ * for table Examination
+ * 
+ * @author Group 18
+ *
+ */
+
 @Entity
 @Table(name ="examination")
 public class Examination {
 	
-	
+	//auto increment for new data
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "exam_code")
@@ -31,6 +39,8 @@ public class Examination {
 	@Column(name = "exam_time")
 	private LocalTime exam_time;
 	
+	//FK for TABLE Subject 
+	//join the examination table and subject table
 	@ManyToOne
     @JoinColumn(name="subject_code")
     private Subject subject_code;
@@ -38,6 +48,8 @@ public class Examination {
 	@Column(name = "duration")
 	private int duration;
 	
+	//FK for TABLE Lecturer 
+	//join the examination table and lecturer table
 	@ManyToOne
     @JoinColumn(name="lecturer_ID")
     private Lecturer lecturer_ID;

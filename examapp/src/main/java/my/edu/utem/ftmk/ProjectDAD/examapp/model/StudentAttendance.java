@@ -10,15 +10,19 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+
 @Entity
 @Table(name = "student_attendance")
 public class StudentAttendance {
 
+	//auto increment for new data
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "attendance_ID")
 	private int attendance_ID;
 	
+	//FK for TABLE Student 
+	//join the student attendance table and student table
 	@ManyToOne
     @JoinColumn(name="matricno")
 	private Student matricno;
@@ -26,6 +30,8 @@ public class StudentAttendance {
 	@Column(name = "dateTime")
 	private String dateTime;
 	
+	//FK for TABLE EXAMINATION 
+	//join the student attendance table and examination table
 	@ManyToOne
     @JoinColumn(name="exam_code")
 	private Examination exam_code;
