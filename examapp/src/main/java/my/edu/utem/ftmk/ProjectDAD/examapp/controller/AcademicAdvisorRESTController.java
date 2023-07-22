@@ -28,7 +28,6 @@ public class AcademicAdvisorRESTController {
 	
 	@Autowired
 	private AcademicAdvisorRepository academicAdvisorRepository;
-	
 	/*
 	 * Find all academic advisor
 	 */	
