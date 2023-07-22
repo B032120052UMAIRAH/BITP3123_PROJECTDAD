@@ -19,6 +19,7 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.model.Examination;
 
 @Controller
 public class ExaminationMenuController {
+	
 	@GetMapping("/exam/list")
 	public String getExamination(Model model){
 		
