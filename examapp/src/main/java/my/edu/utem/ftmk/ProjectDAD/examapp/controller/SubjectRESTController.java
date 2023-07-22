@@ -16,12 +16,11 @@ import org.springframework.http.ResponseEntity;
 import my.edu.utem.ftmk.ProjectDAD.examapp.model.Subject;
 import my.edu.utem.ftmk.ProjectDAD.examapp.repository.SubjectRepository;
 
-/*CREATE BY GROUP 18
- * B032120025 - Imran
- * B032120040 - Syazwina
- * B032120052 - Umairah
-*/
 
+/**
+ * @author user
+ *
+ */
 @RestController
 @RequestMapping("/api/subjects")
 public class SubjectRESTController {
@@ -30,40 +29,33 @@ public class SubjectRESTController {
 	private SubjectRepository subjectRepository;
 	
 	@GetMapping
-	public List<Subject> getSubjects()
-	{
+	public List<Subject> getSubjects(){
 		return subjectRepository.findAll();
-		
 	}
 	
-	//retrieve subject details
-	@GetMapping("{subject_code}")
-	public Subject getSubject(@PathVariable String subject_code)
-	{
-		Subject subject  = subjectRepository.findById(subject_code).get();
-		
+	// retrieve subject details
+	@GetMapping("{subjectCode}")
+	public Subject getSubject(@PathVariable String subjectCode){
+		Subject subject  = subjectRepository.findById(subjectCode).get();
 		return subject;
 	}
 	
-	//insert subject 
+	// insert subject 
 	@PostMapping
-	public Subject insertSubject(@RequestBody Subject subject)
-	{
+	public Subject insertSubject(@RequestBody Subject subject){
 		return subjectRepository.save(subject);
 	}
 	
-	//update subject 
+	// update subject 
 	@PutMapping
-	public Subject updateSubject(@RequestBody Subject subject)
-	{
+	public Subject updateSubject(@RequestBody Subject subject){
 		return subjectRepository.save(subject);
 	}
 	
-	//delete subject by ID as subject_code 
-	@DeleteMapping("{subject_code}")
-	public ResponseEntity<HttpStatus> deleteSubject(@PathVariable String subject_code)
-	{
-		subjectRepository.deleteById(subject_code);
+	// delete subject by ID as subject_code 
+	@DeleteMapping("{subjectCode}")
+	public ResponseEntity<HttpStatus> deleteSubject(@PathVariable String subjectCode){
+		subjectRepository.deleteById(subjectCode);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 

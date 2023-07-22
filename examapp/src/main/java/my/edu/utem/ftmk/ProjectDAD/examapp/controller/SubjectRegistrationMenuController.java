@@ -27,21 +27,22 @@ public class SubjectRegistrationMenuController {
 	@GetMapping("/subjectregistration/list")
 	public String getSubjectRegistrations(Model model){
 		
-		//URI get order types
+		// URI get order types
 		String uri ="http://localhost:8080/examapp/api/subjectregistrations";
 		
-		//get list order types from web service
+		// get list order types from web service
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<SubjectRegistration[]> response = 
 				restTemplate.getForEntity(uri, SubjectRegistration[].class);
 		
-		//Parse JSON data to array of object
+		// Parse JSON data to array of object
 		SubjectRegistration subjectRegistrations[]=response.getBody();
 
-		//Parse array to a list object
-		List<SubjectRegistration> subjectregistrationList = Arrays.asList(subjectRegistrations);
+		// Parse array to a list object
+		List<SubjectRegistration> subjectregistrationList = 
+				Arrays.asList(subjectRegistrations);
 		
-		//Attach list to model as attribute
+		// Attach list to model as attribute
 		model.addAttribute("subjectRegistrations",subjectregistrationList);
 		
 		return "subjectregistrations";

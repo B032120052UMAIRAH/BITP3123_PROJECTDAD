@@ -18,7 +18,7 @@
 <body>
   <div th:replace="fragments/header :: header"></div>
 
-  <div class="container-fluid" style="max-width: 900px; margin: 0 auto;">
+  <div class="container-fluid" style="max-width: 1200px; margin: 0 auto;">
     <h2 class="text-center">List of Students</h2>
 
     <div th:if="${message != null}" class="alert alert-success alert-dismissible fade show text-center message"
@@ -52,14 +52,21 @@
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Phone Number</th>
+            <th scope="col">Academic Advisor</th>
+            <th scope="col">Faculty</th>
+            <th scope="col">Course</th>
           </tr>
         </thead>
         <tbody>
           <tr th:each="student : ${students}">
-            <th scope="row">[[${student.matricno}]]</th>
-            <td>[[${student.student_name}]]</td>
-            <td>[[${student.student_email}]]</td>
-            <td>[[${student.student_phoneNumber}]]</td>
+            <th scope="row">[[${student.matricNo}]]</th>
+            <td>[[${student.name}]]</td>
+            <td>[[${student.email}]]</td>
+            <td>[[${student.phoneNumber}]]</td>
+            <td>[[${student.advisorId.advisorId}]]</td>
+            <td>[[${student.facultyCode.facultyCode}]]</td>
+            <td>[[${student.courseCode.courseCode}]]</td>
+            
           </tr>
         </tbody>
       </table>
@@ -100,9 +107,9 @@
         e.preventDefault();
         link = $(this);
 
-        matricno = link.attr("matricno");
+        matricNo = link.attr("matricNo");
         $("#yesBtn").attr("href", link.attr("href"));
-        $("#confirmText").html("Do you want to delete the  \<strong\>" + matricno + "\<\/strong\>?");
+        $("#confirmText").html("Do you want to delete the  \<strong\>" + matricNo + "\<\/strong\>?");
         $("#confirmModal").modal();
       });
 

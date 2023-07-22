@@ -14,54 +14,167 @@
 
 <body>
   <div th:replace="fragments/header :: header"></div>
+  <div class="container-fluid" style="max-width: 900px; margin: 0 auto;">
+    <h2 class="text-center">List of Examination</h2>
+
+    <div>
+      <table class="table table-hover table-responsive-xl">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Exam Code</th>
+            <th scope="col">Exam Venue</th>
+            <th scope="col">Exam Date</th>
+            <th scope="col">Exam Time</th>
+            <th scope="col">Subject Code</th> 
+            <th scope="col">Duration</th> 
+            <th scope="col">Lecturer ID</th> 
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>1</th>
+            <td>Dewan Kuliah UTeM</td>
+            <td>2023-07-19</td>
+            <td>11:00</td>
+            <td>BAEE 1025</td>
+            <td>90</td>
+            <td>L004</td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>Pusat Sukan UTeM</td>
+            <td>2023-07-20</td>
+            <td>11:00</td>
+            <td>BETM 2532</td>
+            <td>90</td>
+            <td>L009</td>
+          </tr>
+            
+          <tr>
+            <th>3</th>
+            <td>Dewan Canselor UTeM	</td>
+            <td>2023-07-21</td>
+            <td>09:00</td>
+            <td>BSRD 2010</td>
+            <td>90</td>
+            <td>L004</td>
+          </tr>
+          
+          <tr>
+            <th>4</th>
+            <td>Kampus Teknologi UTeM</td>
+            <td>2023-07-22</td>
+            <td>14:00</td>
+            <td>BITS 3233</td>
+            <td>90</td>
+            <td>L008</td>
+          </tr>
+          
+          <tr>
+            <th>5</th>
+            <td>Dewan Auditarium FKP</td>
+            <td>2023-07-23</td>
+            <td>14:00</td>
+            <td>BFME 2125</td>
+            <td>90</td>
+            <td>L006</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
 
   <div class="container-fluid">
-    <h2 class="text-center">[[${pageTitle}]]</h2>
+    <h2 class="text-center">Add Student Attendance</h2>
 
     <div class="my-3">
       <form th:action="@{/studentattendance/save}" method="post" enctype="multipart/form-data" th:object="${studentAttendance}"
-        style="max-width: 550px; margin: 0 auto">
+        style="max-width: 600px; margin: 0 auto">
 
-        <input type="hidden" th:field="*{attendance_ID}" />
+        <input type="hidden" th:field="*{attendanceId}" />
 
         <div class="p-3">
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label" for="matricno">Matrices Number</label>
+            <label class="col-sm-3 col-form-label" for="matricNo">Matrices Number</label>
             <div class="col-sm-9">
-              <input type="text" th:field="*{matricno}" required minlength="6" maxlength="10" class="form-control"
-                id="matricno" />
+              <input type="text" th:field="*{matricNo}" required minlength="6" maxlength="10" class="form-control"
+                id="matricNo" />
             </div>
           </div>
-
+          
+              <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="subjectCode">Subject Name</label>
+            <div class="col-sm-9">
+          	<select name="subjectCode" id="subjectCode">
+          	<br>
+          	<br>
+				  <option value=""></option>
+				    <option value="BAEE 1025">BAEE 1025:Automotive Engineering</option>
+				    <option value="BETM 2532">BETM 2532:Engineering and Technology Management</option>
+				    <option value="BSRD 2010">BSRD 2010:Software Requirement Design</option>
+				    <option value="BITS 3233">BITS 3233:Software Validation and Verification</option>
+				    <option value="BFME 2125">BFME 2125:Fundamental of Mechatronics</option>			    
+				  </select>
+            </div>
+          </div>
+          
+                    <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="examCode">Venue</label>
+            <div class="col-sm-9">
+          	<select name="examCode" id="examCode">
+          	<br>
+          	<br>
+				  <option value=""></option>
+				    <option value="1">Dewan Kuliah UTeM</option>
+				    <option value="2">Pusat Sukan UTeM</option>
+				    <option value="3">Dewan Canselor UTeM</option>
+				    <option value="4">Kampus Teknologi UTeM</option>
+				    <option value="5">Dewan Auditarium FKP</option>			    
+				  </select>
+            </div>
+          </div>
+          
           <div class="form-group row">
             <label class="col-sm-3 col-form-label" for="dateTime">Date and Time</label>
             <div class="col-sm-9">
-              <input type="text" th:field="*{dateTime}" minlength="5" maxlength="256" class="form-control"
-                id="dateTime" />
+            <select name="dateTime" id="dateTime">
+          	<br>
+				  <option value=""></option>
+				    <option value="2023-07-19 11:00:00">2023-07-19 11:00:00</option>
+				    <option value="2023-07-20 11:00:00">2023-07-20 11:00:00</option>
+				    <option value="2023-07-21 09:00:00">2023-07-21 09:00:00</option>
+				    <option value="2023-07-22 14:00:00">2023-07-22 14:00:00</option>
+				    <option value="2023-07-23 14:00:00">2023-07-23 14:00:00</option>			    
+				  </select>
+             </div>
             </div>
-          </div>
           
-           <div class="form-group row">
-            <label class="col-sm-3 col-form-label" for="exam_code">Exam Code</label>
-            <div class="col-sm-9">
-              <input type="text" th:field="*{exam_code}" minlength="1" maxlength="256" class="form-control"
-                id="exam_code" />
-            </div>
-          </div>
+
           
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label" for="attendance_method">Attendance Method</label>
-            <div class="col-sm-9">
-              <input type="text" th:field="*{attendance_method}" minlength="3" maxlength="256" class="form-control"
-                id="attendance_method" />
-            </div>
+
+            <label class="col-sm-3 col-form-label" for="method">Attendance Method</label>
+             <div class="col-sm-9">
+            
+				  <select name="method" id="method">
+				  <option value=""></option>
+				    <option value="Matric Card">Matric Card</option>
+				    <option value="Finger Print">Finger Print</option>
+				    <option value="QR Code">QR Code</option>
+				    <option value="Self Check-in App">Self Check-in Apps</option>
+				  </select>
+				</div>
           </div>
           
            <div class="form-group row">
             <label class="col-sm-3 col-form-label" for="status">Status</label>
             <div class="col-sm-9">
-              <input type="text" th:field="*{status}" minlength="2" maxlength="256" class="form-control"
-                id="status" />
+				  <select name="status" id="status">
+				  <option value=""></option>
+				    <option value="present">Present</option>
+				    <option value="absent">Absent</option>
+				  </select>
+				</div>
             </div>
           </div>
           

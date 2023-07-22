@@ -3,12 +3,12 @@ package my.edu.utem.ftmk.ProjectDAD.examapp.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+
 /**
- * This model class to provoke set and get attribute 
- * for table Student
- * 
- * @author Group 18
+ * @author user
  *
  */
 @Entity
@@ -16,84 +16,91 @@ import jakarta.persistence.Table;
 public class Student {
 
 	@Id
-	@Column(name = "matricno")
-	private String matricno;
+	@Column(name = "matricNo")
+	private String matricNo;
 	
-	@Column(name = "student_name")
-	private String student_name;
+	@Column(name = "name")
+	private String name;
 	
-	@Column(name = "student_email")
-	private String student_email;
+	@Column(name = "email")
+	private String email;
 	
-	@Column(name = "student_phoneNumber")
-	private int student_phoneNumber;
+	@Column(name = "phoneNumber")
+	private String phoneNumber;
 	
-	@Column(name = "advisor_ID")
-	private String advisor_ID;
+	//FK for academic advisor  
+	//join the subject student table and academic advisor table
+	@ManyToOne
+    @JoinColumn(name="advisorId")
+	private AcademicAdvisor advisorId;
 	
-	@Column(name = "faculty_code")
-	private String faculty_code;
+	//FK for faculty  
+	//join the subject student table and faculty table
+	@ManyToOne
+	@JoinColumn(name = "facultyCode")
+	private Faculty facultyCode;
 	
-	@Column(name = "course_code")
-	private String course_code;
+	//FK for course  
+	//join the subject student table and course table
+	@ManyToOne
+	@JoinColumn(name = "courseCode")
+	private Course courseCode;
 
-	public String getMatricno() {
-		return matricno;
+	public String getMatricNo() {
+		return matricNo;
 	}
 
-	public void setMatricno(String matricno) {
-		this.matricno = matricno;
+	public void setMatricNo(String matricNo) {
+		this.matricNo = matricNo;
 	}
 
-	public String getStudent_name() {
-		return student_name;
+	public String getName() {
+		return name;
 	}
 
-	public void setStudent_name(String student_name) {
-		this.student_name = student_name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getStudent_email() {
-		return student_email;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setStudent_email(String student_email) {
-		this.student_email = student_email;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public int getStudent_phoneNumber() {
-		return student_phoneNumber;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setStudent_phoneNumber(int student_phoneNumber) {
-		this.student_phoneNumber = student_phoneNumber;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
-	public String getAdvisor_ID() {
-		return advisor_ID;
+	public AcademicAdvisor getAdvisorId() {
+		return advisorId;
 	}
 
-	public void setAdvisor_ID(String advisor_ID) {
-		this.advisor_ID = advisor_ID;
+	public void setAdvisorId(AcademicAdvisor advisorId) {
+		this.advisorId = advisorId;
 	}
 
-	public String getFaculty_code() {
-		return faculty_code;
+	public Faculty getFacultyCode() {
+		return facultyCode;
 	}
 
-	public void setFaculty_code(String faculty_code) {
-		this.faculty_code = faculty_code;
+	public void setFacultyCode(Faculty facultyCode) {
+		this.facultyCode = facultyCode;
 	}
 
-	public String getCourse_code() {
-		return course_code;
+	public Course getCourseCode() {
+		return courseCode;
 	}
 
-	public void setCourse_code(String course_code) {
-		this.course_code = course_code;
+	public void setCourseCode(Course courseCode) {
+		this.courseCode = courseCode;
 	}
-	
-	
-	
-	
+
+
 }

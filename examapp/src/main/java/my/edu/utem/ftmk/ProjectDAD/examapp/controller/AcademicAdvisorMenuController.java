@@ -11,12 +11,6 @@ import org.springframework.web.client.RestTemplate;
 
 import my.edu.utem.ftmk.ProjectDAD.examapp.model.AcademicAdvisor;
 
-/*CREATE BY GROUP 18
- * B032120025 - Imran
- * B032120040 - Syazwina
- * B032120052 - Umairah
-*/
-
 /**
  * This Menu Controller Class for List Academic Advisor
  * 
@@ -25,27 +19,34 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.model.AcademicAdvisor;
  */
 @Controller
 public class AcademicAdvisorMenuController {
-
-	//The method is annotated with @GetMapping("/academicadvisor/list"), 
-	//indicating that it handles GET requests to the "/academicadvisor/list" endpoint.
+	
+	
+	/**
+	 * 	The method is annotated with @GetMapping("/academicadvisor/list"), 
+	 * indicating that it handles GET requests to the "/academicadvisor/list" 
+	 * endpoint.
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/academicadvisor/list")
 	public String getAcademicAdvisors(Model model){
 		
-		//URI get order types
+		// URI get academic advisor
 		String uri ="http://localhost:8080/examapp/api/academicadvisors";
 		
-		//get list order types from web service
+		// Get list academic advisor from web service
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<AcademicAdvisor[]> response = 
 				restTemplate.getForEntity(uri, AcademicAdvisor[].class);
 		
-		//Parse JSON data to array of object
+		// Parse JSON data to array of object
 		AcademicAdvisor academicadvisors[]=response.getBody();
 
-		//Parse array to a list object
+		// Parse array to a list object
 		List<AcademicAdvisor> academicadvisorList = Arrays.asList(academicadvisors);
 		
-		//Attach list to model as attribute
+		// Attach list to model as attribute
 		model.addAttribute("academicadvisors",academicadvisorList);
 		
 		return "academicadvisors";

@@ -1,8 +1,6 @@
 package my.edu.utem.ftmk.ProjectDAD.examapp.model;
 
 import java.time.LocalTime;
-import java.util.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,13 +11,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 /**
- * This model class to provoke set and get attribute 
- * for table Examination
- * 
- * @author Group 18
+ * @author user
  *
  */
-
 @Entity
 @Table(name ="examination")
 public class Examination {
@@ -27,23 +21,23 @@ public class Examination {
 	//auto increment for new data
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "exam_code")
-	private int exam_code;
+	@Column(name = "examCode")
+	private int examCode;
 	
-	@Column(name = "exam_venue")
-	private String exam_venue;
+	@Column(name = "venue")
+	private String venue;
 	
-	@Column(name = "exam_date")
-	private Date exam_date;
+	@Column(name = "date")
+	private String date;
 	
-	@Column(name = "exam_time")
-	private LocalTime exam_time;
+	@Column(name = "time")
+	private LocalTime time;
 	
 	//FK for TABLE Subject 
 	//join the examination table and subject table
 	@ManyToOne
-    @JoinColumn(name="subject_code")
-    private Subject subject_code;
+    @JoinColumn(name="subjectCode")
+    private Subject subjectCode;
 	
 	@Column(name = "duration")
 	private int duration;
@@ -51,64 +45,73 @@ public class Examination {
 	//FK for TABLE Lecturer 
 	//join the examination table and lecturer table
 	@ManyToOne
-    @JoinColumn(name="lecturer_ID")
-    private Lecturer lecturer_ID;
+    @JoinColumn(name="lecturerId")
+    private Lecturer lecturerId;
 	
 	public Examination() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Examination(int exam_code, String exam_venue, Date exam_date, LocalTime exam_time, Subject subject_code,
-			int duration, Lecturer lecturer_ID) {
+	public Examination(int examCode, String venue, String date, LocalTime time, Subject subjectCode, int duration,
+			Lecturer lecturerId) {
 		super();
-		this.exam_code = exam_code;
-		this.exam_venue = exam_venue;
-		this.exam_date = exam_date;
-		this.exam_time = exam_time;
-		this.subject_code = subject_code;
+		this.examCode = examCode;
+		this.venue = venue;
+		this.date = date;
+		this.time = time;
+		this.subjectCode = subjectCode;
 		this.duration = duration;
-		this.lecturer_ID = lecturer_ID;
+		this.lecturerId = lecturerId;
 	}
 
-	public int getExam_code() {
-		return exam_code;
+	public int getExamCode() {
+		return examCode;
 	}
 
-	public void setExam_code(int exam_code) {
-		this.exam_code = exam_code;
+	public void setExamCode(int examCode) {
+		this.examCode = examCode;
 	}
 
-	public String getExam_venue() {
-		return exam_venue;
+	public String getVenue() {
+		return venue;
 	}
 
-	public void setExam_venue(String exam_venue) {
-		this.exam_venue = exam_venue;
+	public void setVenue(String venue) {
+		this.venue = venue;
 	}
 
-	public Date getExam_date() {
-		return exam_date;
+
+	public String getDate() {
+		return date;
 	}
 
-	public void setExam_date(Date exam_date) {
-		this.exam_date = exam_date;
+	public void setDate(String date) {
+		this.date = date;
 	}
 
-	public LocalTime getExam_time() {
-		return exam_time;
+	public LocalTime getTime() {
+		return time;
 	}
 
-	public void setExam_time(LocalTime exam_time) {
-		this.exam_time = exam_time;
+	public void setTime(LocalTime time) {
+		this.time = time;
 	}
 
-	public Subject getSubject_code() {
-		return subject_code;
+	public Subject getSubjectCode() {
+		return subjectCode;
 	}
 
-	public void setSubject_code(Subject subject_code) {
-		this.subject_code = subject_code;
+	public void setSubjectCode(Subject subjectCode) {
+		this.subjectCode = subjectCode;
+	}
+
+	public Lecturer getLecturerId() {
+		return lecturerId;
+	}
+
+	public void setLecturerId(Lecturer lecturerId) {
+		this.lecturerId = lecturerId;
 	}
 
 	public int getDuration() {
@@ -118,13 +121,7 @@ public class Examination {
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
-
-	public Lecturer getLecturer_ID() {
-		return lecturer_ID;
-	}
-
-	public void setLecturer_ID(Lecturer lecturer_ID) {
-		this.lecturer_ID = lecturer_ID;
-	}
+	
+	
 	
 }

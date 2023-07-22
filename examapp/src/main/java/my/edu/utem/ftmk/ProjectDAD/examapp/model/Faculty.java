@@ -4,11 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
 /**
- * This model class to provoke set and get attribute 
- * for table Faculty
- * 
- * @author Group 18
+ * @author user
  *
  */
 @Entity
@@ -16,28 +14,27 @@ import jakarta.persistence.Table;
 public class Faculty {
 
 	@Id
-	@Column(name = "faculty_code")
-	private String faculty_code;
+	@Column(name = "facultyCode")
+	private String facultyCode;
 	
-	@Column(name = "faculty_name")
-	private String faculty_name;
+	@Column(name = "name")
+	private String name;
 
-	public String getFaculty_code() {
-		return faculty_code;
+	public String getFacultyCode() {
+		return facultyCode;
 	}
 
-	public void setFaculty_code(String faculty_code) {
-		this.faculty_code = faculty_code;
+	public void setFacultyCode(String facultyCode) {
+		this.facultyCode = facultyCode;
 	}
 
-	public String getFaculty_name() {
-		return faculty_name;
+	public String getName() {
+		return name;
 	}
 
-	public void setFaculty_name(String faculty_name) {
-		this.faculty_name = faculty_name;
+	public void setName(String name) {
+		this.name = name;
 	}
-	
 	
 	
 }

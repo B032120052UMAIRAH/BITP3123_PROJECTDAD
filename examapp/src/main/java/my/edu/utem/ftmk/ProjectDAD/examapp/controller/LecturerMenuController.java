@@ -30,21 +30,21 @@ public class LecturerMenuController {
 	@GetMapping("/lecturer/list")
 	public String getLecturer(Model model){
 		
-		//URI get order types
+		// URI get order types
 		String uri ="http://localhost:8080/examapp/api/lecturers";
 		
-		//get list order types from web service
+		// get list order types from web service
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Lecturer[]> response = 
 				restTemplate.getForEntity(uri, Lecturer[].class);
 		
-		//Parse JSON data to array of object
+		// Parse JSON data to array of object
 		Lecturer lecturers[]=response.getBody();
 
-		//Parse array to a list object
+		// Parse array to a list object
 		List<Lecturer> lecturersList = Arrays.asList(lecturers);
 		
-		//Attach list to model as attribute
+		// Attach list to model as attribute
 		model.addAttribute("lecturers",lecturersList);
 		
 		return "lecturers";

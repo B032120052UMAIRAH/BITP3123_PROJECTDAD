@@ -6,7 +6,4 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.model.SubjectRegistration;
 
 public interface SubjectRegistrationRepository extends JpaRepository<SubjectRegistration, Long> {
 
-	//int countBySubjectSubjectId(String subjectId);
-
-
 }

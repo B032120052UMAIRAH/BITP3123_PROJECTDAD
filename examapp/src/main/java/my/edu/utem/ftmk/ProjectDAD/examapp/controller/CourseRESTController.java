@@ -17,53 +17,46 @@ import org.springframework.http.ResponseEntity;
 import my.edu.utem.ftmk.ProjectDAD.examapp.model.Course;
 import my.edu.utem.ftmk.ProjectDAD.examapp.repository.CourseRepository;
 
-/*CREATE BY GROUP 18
- * B032120025 - Imran
- * B032120040 - Syazwina
- * B032120052 - Umairah
-*/
-
+/**
+ * @author user
+ *
+ */
 @RestController
 @RequestMapping("/api/courses")
-public class CourseRESTController {
+public class CourseRESTController{
 
 	@Autowired
 	private CourseRepository courseRepository;
 	
 	@GetMapping
-	public List<Course> getCourses()
-	{
+	public List<Course> getCourses(){
 		return courseRepository.findAll();
-		
 	}
 	
-	//retrieve course details
-	@GetMapping("{course_code}")
-	public Course getCourse(@PathVariable String course_code)
-	{
-		Course course  = courseRepository.findById(course_code).get();
-		
+	// retrieve course details
+	@GetMapping("{courseCode}")
+	public Course getCourse(@PathVariable String courseCode){
+		Course course  = courseRepository.findById(courseCode).get();
 		return course;
 	}
-	//insert Course
+	
+	// insert Course
 	@PostMapping
 	public Course insertCourse(@RequestBody Course course)
 	{
 		return courseRepository.save(course);
 	}
 	
-	//update Course
+	// update Course
 	@PutMapping
-	public Course updateCourse(@RequestBody Course course)
-	{
+	public Course updateCourse(@RequestBody Course course){
 		return courseRepository.save(course);
 	}
 	
-	//delete Course
-	@DeleteMapping("{course_code}")
-	public ResponseEntity<HttpStatus> deleteCourse(@PathVariable String course_code)
-	{
-		courseRepository.deleteById(course_code);
+	// delete Course
+	@DeleteMapping("{courseCode}")
+	public ResponseEntity<HttpStatus> deleteCourse(@PathVariable String courseCode){
+		courseRepository.deleteById(courseCode);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

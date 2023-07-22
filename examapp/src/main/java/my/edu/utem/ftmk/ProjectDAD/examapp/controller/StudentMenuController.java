@@ -28,21 +28,21 @@ public class StudentMenuController {
 	@GetMapping("/student/list")
 	public String getStudents(Model model){
 		
-		//URI get order types
+		// URI get order types
 		String uri ="http://localhost:8080/examapp/api/students";
 		
-		//get list order types from web service
+		// get list order types from web service
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Student[]> response = 
 				restTemplate.getForEntity(uri, Student[].class);
 		
-		//Parse JSON data to array of object
+		// Parse JSON data to array of object
 		Student students[]=response.getBody();
 
-		//Parse array to a list object
+		// Parse array to a list object
 		List<Student> studentList = Arrays.asList(students);
 		
-		//Attach list to model as attribute
+		// Attach list to model as attribute
 		model.addAttribute("students",studentList);
 		
 		return "students";

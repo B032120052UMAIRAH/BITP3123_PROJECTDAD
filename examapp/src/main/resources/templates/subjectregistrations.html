@@ -57,11 +57,11 @@
         </thead>
         <tbody>
           <tr th:each="subjectRegistration : ${subjectRegistrations}">
-            <th scope="row">[[${subjectRegistration.subjReg_ID}]]</th>
-            <td>[[${subjectRegistration.matricno.matricno}]]</td>
-            <td>[[${subjectRegistration.matricno.student_name}]]</td>
-            <td>[[${subjectRegistration.subject_code.subject_code}]]</td>
-            <td>[[${subjectRegistration.subject_code.subject_name}]]</td>
+            <th scope="row">[[${subjectRegistration.subjRegId}]]</th>
+            <td>[[${subjectRegistration.matricNo.matricNo}]]</td>
+            <td>[[${subjectRegistration.matricNo.name}]]</td>
+            <td>[[${subjectRegistration.subjectCode.subjectCode}]]</td>
+            <td>[[${subjectRegistration.subjectCode.name}]]</td>
           </tr>
         </tbody>
       </table>
@@ -103,9 +103,9 @@
         e.preventDefault();
         link = $(this);
 
-        advisor_ID = link.attr("subjReg_ID");
+        subRegId = link.attr("subjRegId");
         $("#yesBtn").attr("href", link.attr("href"));
-        $("#confirmText").html("Do you want to delete the  \<strong\>" + subjReg_ID + "\<\/strong\>?");
+        $("#confirmText").html("Do you want to delete the  \<strong\>" + subjRegId + "\<\/strong\>?");
         $("#confirmModal").modal();
       });
 

@@ -18,12 +18,10 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.model.SubjectRegistration;
 import my.edu.utem.ftmk.ProjectDAD.examapp.repository.SubjectRegistrationRepository;
 
 
-/*CREATE BY GROUP 18
- * B032120052 - Umairah
- * B032120025 - Imran
- * B032120040 - Syazwina
-*/
-
+/**
+ * @author user
+ *
+ */
 @RestController
 @RequestMapping("/api/subjectregistrations")
 public class SubjectRegistrationRESTController {
@@ -33,41 +31,41 @@ public class SubjectRegistrationRESTController {
 	
 
 	@GetMapping
-	public List<SubjectRegistration> getSubjectRegistrations()
-	{
+	public List<SubjectRegistration> getSubjectRegistrations(){
 		return subjectRegistrationRepository.findAll();
-		
 	}
 	
-	//retrieve attendance details
-	@GetMapping("{subjReg_ID}")
-	public SubjectRegistration getAttendance(@PathVariable long subjReg_ID)
-	{
-		SubjectRegistration subjectRegistration  = subjectRegistrationRepository.findById(subjReg_ID).get();
+	// retrieve attendance details
+	@GetMapping("{subjRegId}")
+	public SubjectRegistration getAttendance(@PathVariable long subjRegId){
+		SubjectRegistration subjectRegistration  = 
+				subjectRegistrationRepository.findById(subjRegId).get();
 		
 		return subjectRegistration;
 	}
 	
-	//insert attendance
+	// insert attendance
 	@PostMapping
-	public SubjectRegistration insertSubjectRegistration(@RequestBody SubjectRegistration subjectRegistration)
-	{
+	public SubjectRegistration insertSubjectRegistration
+	(@RequestBody SubjectRegistration subjectRegistration){
+		
 		return subjectRegistrationRepository.save(subjectRegistration);
 	}
 	
-	//update attendance
-
+	// update attendance
 	@PutMapping
-	public SubjectRegistration updateSubjectRegistration(@RequestBody SubjectRegistration subjectRegistration)
-	{
+	public SubjectRegistration updateSubjectRegistration
+	(@RequestBody SubjectRegistration subjectRegistration){
+		
 		return subjectRegistrationRepository.save(subjectRegistration);
 	}
 	
-	//delete attendance
-	@DeleteMapping("{subjReg_ID}")
-	public ResponseEntity<HttpStatus> deleteSubjectRegistration(@PathVariable long subjReg_ID)
-	{
-		subjectRegistrationRepository.deleteById(subjReg_ID);
+	// delete attendance
+	@DeleteMapping("{subjRegId}")
+	public ResponseEntity<HttpStatus> deleteSubjectRegistration
+	(@PathVariable long subjRegId){
+		
+		subjectRegistrationRepository.deleteById(subjRegId);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

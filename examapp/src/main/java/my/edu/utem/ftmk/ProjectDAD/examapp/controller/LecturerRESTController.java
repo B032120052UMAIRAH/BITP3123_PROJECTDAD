@@ -16,12 +16,10 @@ import org.springframework.http.ResponseEntity;
 import my.edu.utem.ftmk.ProjectDAD.examapp.model.Lecturer;
 import my.edu.utem.ftmk.ProjectDAD.examapp.repository.LecturerRepository;
 
-/*CREATE BY GROUP 18
- * B032120025 - Imran
- * B032120040 - Syazwina
- * B032120052 - Umairah
-*/
-
+/**
+ * @author user
+ *
+ */
 @RestController
 @RequestMapping("/api/lecturers")
 public class LecturerRESTController {
@@ -30,40 +28,35 @@ public class LecturerRESTController {
 	private LecturerRepository lecturerRepository;
 	
 	@GetMapping
-	public List<Lecturer> getLecturers()
-	{
+	public List<Lecturer> getLecturers(){
 		return lecturerRepository.findAll();
 		
 	}
 	
-	//retrieve lecturer details
-	@GetMapping("{lecturer_ID}")
-	public Lecturer getLecturer(@PathVariable String lecturer_ID)
-	{
-		Lecturer lecturer  = lecturerRepository.findById(lecturer_ID).get();
-		
+	// retrieve lecturer details
+	@GetMapping("{lecturerId}")
+	public Lecturer getLecturer(@PathVariable String lecturerId){
+		Lecturer lecturer  = lecturerRepository.findById(lecturerId).get();
 		return lecturer;
 	}
 	
-	//insert lecturer
+	// insert lecturer
 	@PostMapping
 	public Lecturer insertLecturer(@RequestBody Lecturer lecturer)
 	{
 		return lecturerRepository.save(lecturer);
 	}
 	
-	//update lecturer
+	// update lecturer
 	@PutMapping
-	public Lecturer updateLecturer(@RequestBody Lecturer lecturer)
-	{
+	public Lecturer updateLecturer(@RequestBody Lecturer lecturer){
 		return lecturerRepository.save(lecturer);
 	}
 	
-	//delete lecturer
-	@DeleteMapping("{lecturer_ID}")
-	public ResponseEntity<HttpStatus> deleteLecturer(@PathVariable String lecturer_ID)
-	{
-		lecturerRepository.deleteById(lecturer_ID);
+	// delete lecturer
+	@DeleteMapping("{lecturerId}")
+	public ResponseEntity<HttpStatus> deleteLecturer(@PathVariable String lecturerId){
+		lecturerRepository.deleteById(lecturerId);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

@@ -56,10 +56,10 @@
         </thead>
         <tbody>
           <tr th:each="academicadvisor : ${academicadvisors}">
-            <th scope="row">[[${academicadvisor.advisor_ID}]]</th>
-            <td>[[${academicadvisor.advisor_name}]]</td>
-            <td>[[${academicadvisor.advisor_phoneNumber}]]</td>
-            <td>[[${academicadvisor.advisor_email}]]</td>
+            <th scope="row">[[${academicadvisor.advisorId}]]</th>
+            <td>[[${academicadvisor.name}]]</td>
+            <td>[[${academicadvisor.phoneNumber}]]</td>
+            <td>[[${academicadvisor.email}]]</td>
           </tr>
         </tbody>
       </table>
@@ -100,9 +100,9 @@
         e.preventDefault();
         link = $(this);
 
-        advisor_ID = link.attr("advisor_ID");
+        advisorId = link.attr("advisorId");
         $("#yesBtn").attr("href", link.attr("href"));
-        $("#confirmText").html("Do you want to delete the  \<strong\>" + advisor_ID + "\<\/strong\>?");
+        $("#confirmText").html("Do you want to delete the  \<strong\>" + advisorId + "\<\/strong\>?");
         $("#confirmModal").modal();
       });
 

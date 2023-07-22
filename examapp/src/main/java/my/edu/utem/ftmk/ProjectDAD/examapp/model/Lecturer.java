@@ -5,73 +5,72 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+
 /**
- * This model class to provoke set and get attribute 
- * for table Lecturer
- * 
- * @author Group 18
+ * @author user
  *
  */
-
 @Entity
 @Table(name = "lecturer")
 public class Lecturer {
 	
 	@Id
-	@Column(name = "lecturer_ID")
-	private String lecturer_ID;
+	@Column(name = "lecturerId")
+	private String lecturerId;
+	// lecturerId
 	
-	@Column(name = "lecturer_name")
-	private String lecturer_name;
+	@Column(name = "name")
+	private String name;
 	
-	@Column(name = "lecturer_department")
-	private String lecturer_department;
+	@Column(name = "department")
+	private String department;
 	
-	@Column(name = "lecturer_phoneNumber")
-	private int lecturer_phoneNumber;
+	@Column(name = "phoneNumber")
+	private String phoneNumber;
 	
-	@Column(name = "subject_code")
-	private String subject_code;
+	@Column(name = "subjectCode")
+	private String subjectCode;
 
-	public String getLecturer_ID() {
-		return lecturer_ID;
+	public String getLecturerId() {
+		return lecturerId;
 	}
 
-	public void setLecturer_ID(String lecturer_ID) {
-		this.lecturer_ID = lecturer_ID;
+	public void setLecturerId(String lecturerId) {
+		this.lecturerId = lecturerId;
 	}
 
-	public String getLecturer_name() {
-		return lecturer_name;
+	public String getName() {
+		return name;
 	}
 
-	public void setLecturer_name(String lecturer_name) {
-		this.lecturer_name = lecturer_name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getLecturer_department() {
-		return lecturer_department;
+	public String getDepartment() {
+		return department;
 	}
 
-	public void setLecturer_department(String lecturer_department) {
-		this.lecturer_department = lecturer_department;
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 
-	public int getLecturer_phoneNumber() {
-		return lecturer_phoneNumber;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setLecturer_phoneNumber(int lecturer_phoneNumber) {
-		this.lecturer_phoneNumber = lecturer_phoneNumber;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
-	public String getSubject_code() {
-		return subject_code;
+	public String getSubjectCode() {
+		return subjectCode;
 	}
 
-	public void setSubject_code(String subject_code) {
-		this.subject_code = subject_code;
+	public void setSubjectCode(String subjectCode) {
+		this.subjectCode = subjectCode;
 	}
+
 	
 	
 

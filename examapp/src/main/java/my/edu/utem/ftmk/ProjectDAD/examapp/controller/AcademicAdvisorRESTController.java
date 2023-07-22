@@ -17,12 +17,11 @@ import org.springframework.http.ResponseEntity;
 import my.edu.utem.ftmk.ProjectDAD.examapp.model.AcademicAdvisor;
 import my.edu.utem.ftmk.ProjectDAD.examapp.repository.AcademicAdvisorRepository;
 
-/*CREATE BY GROUP 18
- * B032120025 - Imran
- * B032120040 - Syazwina
- * B032120052 - Umairah
-*/
 
+/**
+ * @author user
+ *
+ */
 @RestController
 @RequestMapping("/api/academicadvisors")
 public class AcademicAdvisorRESTController {
@@ -33,42 +32,55 @@ public class AcademicAdvisorRESTController {
 	/*
 	 * Find all academic advisor
 	 */	
-	
 	@GetMapping
-	public List<AcademicAdvisor> getAcademicAdvisors()
-	{
+	public List<AcademicAdvisor> getAcademicAdvisors(){
 		return academicAdvisorRepository.findAll();
-		
 	}
 	
-	//retrieve academic advisor details
-	@GetMapping("{advisor_ID}")
-	public AcademicAdvisor getAcademicAdvisor(@PathVariable String advisor_ID)
-	{
-		AcademicAdvisor academicAdvisor  = academicAdvisorRepository.findById(advisor_ID).get();
-		
+	/**
+	 * Retrieve academic advisor details
+	 * 
+	 * @param advisorId
+	 * @return
+	 */
+	@GetMapping("{advisorId}")
+	public AcademicAdvisor getAcademicAdvisor(@PathVariable String advisorId){
+		AcademicAdvisor academicAdvisor  = 
+				academicAdvisorRepository.findById(advisorId).get();
 		return academicAdvisor;
 	}
 	
-	//insert academic advisor
+	/**
+	 * Insert academic advisor
+	 * 
+	 * @param academicAdvisor
+	 * @return
+	 */
 	@PostMapping
-	public AcademicAdvisor insertAcademicAdvisor(@RequestBody AcademicAdvisor academicAdvisor)
-	{
+	public AcademicAdvisor insertAcademicAdvisor(@RequestBody AcademicAdvisor academicAdvisor){
 		return academicAdvisorRepository.save(academicAdvisor);
 	}
 	
-	//update academic advisor
+	/**
+	 * Update academic advisor
+	 * 
+	 * @param academicAdvisor
+	 * @return
+	 */
 	@PutMapping
-	public AcademicAdvisor updateAcademicAdvisor(@RequestBody AcademicAdvisor academicAdvisor)
-	{
+	public AcademicAdvisor updateAcademicAdvisor(@RequestBody AcademicAdvisor academicAdvisor){
 		return academicAdvisorRepository.save(academicAdvisor);
 	}
 	
-	//delete academic advisor
-	@DeleteMapping("{advisor_ID}")
-	public ResponseEntity<HttpStatus> deleteAcademicAdvisor(@PathVariable String advisor_ID)
-	{
-		academicAdvisorRepository.deleteById(advisor_ID);
+	/**
+	 * Delete academic advisor
+	 * 
+	 * @param advisorId
+	 * @return
+	 */
+	@DeleteMapping("{advisorId}")
+	public ResponseEntity<HttpStatus> deleteAcademicAdvisor(@PathVariable String advisorId){
+		academicAdvisorRepository.deleteById(advisorId);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	

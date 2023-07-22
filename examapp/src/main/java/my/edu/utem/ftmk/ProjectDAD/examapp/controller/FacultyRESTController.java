@@ -16,53 +16,46 @@ import org.springframework.http.ResponseEntity;
 import my.edu.utem.ftmk.ProjectDAD.examapp.model.Faculty;
 import my.edu.utem.ftmk.ProjectDAD.examapp.repository.FacultyRepository;
 
-/*CREATE BY GROUP 18
- * B032120025 - Imran
- * B032120040 - Syazwina
- * B032120052 - Umairah
-*/
 
+/**
+ * @author user
+ *
+ */
 @RestController
-@RequestMapping("/api/facultys")
+@RequestMapping("/api/faculties")
 public class FacultyRESTController {
 
 	@Autowired
 	private FacultyRepository facultyRepository;
 	
 	@GetMapping
-	public List<Faculty> getFacultys()
-	{
+	public List<Faculty> getFacultys(){
 		return facultyRepository.findAll();
-		
 	}
 	
-	//retrieve faculty details
-	@GetMapping("{faculty_code}")
-	public Faculty getFaculty(@PathVariable String faculty_code)
-	{
-		Faculty faculty  = facultyRepository.findById(faculty_code).get();
-		
+	// retrieve faculty details
+	@GetMapping("{facultyCode}")
+	public Faculty getFaculty(@PathVariable String facultyCode){
+		Faculty faculty  = facultyRepository.findById(facultyCode).get();
 		return faculty;
 	}
-	//insert faculty
+	
+	// insert faculty
 	@PostMapping
-	public Faculty insertFaculty(@RequestBody Faculty faculty)
-	{
+	public Faculty insertFaculty(@RequestBody Faculty faculty){
 		return facultyRepository.save(faculty);
 	}
 	
-	//update faculty 
+	// update faculty 
 	@PutMapping
-	public Faculty updateFaculty(@RequestBody Faculty faculty)
-	{
+	public Faculty updateFaculty(@RequestBody Faculty faculty){
 		return facultyRepository.save(faculty);
 	}
 	
-	//delete faculty using ID (faculty code)
-	@DeleteMapping("{faculty_code}")
-	public ResponseEntity<HttpStatus> deleteFaculty(@PathVariable String faculty_code)
-	{
-		facultyRepository.deleteById(faculty_code);
+	// delete faculty using ID (faculty code)
+	@DeleteMapping("{facultyCode}")
+	public ResponseEntity<HttpStatus> deleteFaculty(@PathVariable String facultyCode){
+		facultyRepository.deleteById(facultyCode);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

@@ -15,12 +15,10 @@ import org.springframework.http.ResponseEntity;
 import my.edu.utem.ftmk.ProjectDAD.examapp.model.Student;
 import my.edu.utem.ftmk.ProjectDAD.examapp.repository.StudentRepository;
 
-/*CREATE BY GROUP 18
- * B032120025 - Imran
- * B032120040 - Syazwina
- * B032120052 - Umairah
-*/
-
+/**
+ * @author user
+ *
+ */
 @RestController
 @RequestMapping("/api/students")
 public class StudentRESTController {
@@ -29,39 +27,34 @@ public class StudentRESTController {
 	private StudentRepository studentRepository;
 	
 	@GetMapping
-	public List<Student> getStudents()
-	{
+	public List<Student> getStudents(){
 		return studentRepository.findAll();
 		
 	}
 	
-	//retrieve order details by matric number (matricno)
-	@GetMapping("{matricno}")
-	public Student getStudent(@PathVariable String matricno)
-	{
-		Student student  = studentRepository.findById(matricno).get();
+	// retrieve order details by matric number (matricno)
+	@GetMapping("{matricNo}")
+	public Student getStudent(@PathVariable String matricNo){
+		Student student  = studentRepository.findById(matricNo).get();
 		return student;
 	}
 	
-	//insert student details 
+	// insert student details 
 	@PostMapping
-	public Student insertStudent(@RequestBody Student student)
-	{
+	public Student insertStudent(@RequestBody Student student){
 		return studentRepository.save(student);
 	}
 	
-	//update student details
+	// update student details
 	@PutMapping
-	public Student updateStudent(@RequestBody Student student)
-	{
+	public Student updateStudent(@RequestBody Student student){
 		return studentRepository.save(student);
 	}
 	
-	//delete student by matric number as id (matricno)
-	@DeleteMapping("{matricno}")
-	public ResponseEntity<HttpStatus> deleteStudent(@PathVariable String matricno)
-	{
-		studentRepository.deleteById(matricno);
+	// delete student by matric number as id (matricno)
+	@DeleteMapping("{matricNo}")
+	public ResponseEntity<HttpStatus> deleteStudent(@PathVariable String matricNo){
+		studentRepository.deleteById(matricNo);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	

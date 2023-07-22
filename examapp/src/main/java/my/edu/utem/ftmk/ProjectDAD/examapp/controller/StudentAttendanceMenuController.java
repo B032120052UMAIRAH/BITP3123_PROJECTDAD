@@ -18,65 +18,65 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.model.StudentAttendance;
 /**
  * This Menu Controller Class for Student Attendance
  * 
- * @author Umairah(B032120052)
+ * @author Umairah
  *
  */
 @Controller
 public class StudentAttendanceMenuController {
 	
-	//private String defaultURI = "http://localhost:8080/examapp/api/studentattendances";
-
-	//LIST STUDENT ATTENDANCE
 	@GetMapping("/studentattendance/list")
 	public String getStudentAttendances(Model model){
 		
-		//URI get order types
+		// URI get order types
 		String uri1 ="http://localhost:8080/examapp/api/studentattendances";
 		
-		//get list order types from web service
+		// get list order types from web service
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<StudentAttendance[]> response = 
 				restTemplate.getForEntity(uri1, StudentAttendance[].class);
 		
-		//Parse JSON data to array of object
+		// Parse JSON data to array of object
 		StudentAttendance studentAttendances[]=response.getBody();
 
-		//Parse array to a list object
-		List<StudentAttendance> studentAttendancesList = Arrays.asList(studentAttendances);
+		// Parse array to a list object
+		List<StudentAttendance> studentAttendancesList = 
+				Arrays.asList(studentAttendances);
 		
-		//URI get student attendances
+		// URI get student attendances
 		String uri2 ="http://localhost:8080/examapp/api/studentattendances/absents";
-		//get list order types from web service
+		
+		// get list order types from web service
 		RestTemplate restTemplateAbsent = new RestTemplate();
 		ResponseEntity<StudentAttendance[]> responseAbsent = 
 				restTemplateAbsent.getForEntity(uri2, StudentAttendance[].class);
 				
-		//Parse JSON data to array of object
+		// Parse JSON data to array of object
 		StudentAttendance studentAttendancesAbsent[]=responseAbsent.getBody();
 
-		//Parse array to a list object
-     	List<StudentAttendance> studentAttendancesAbsentList = Arrays.asList(studentAttendancesAbsent);
+		// Parse array to a list object
+     	List<StudentAttendance> studentAttendancesAbsentList = 
+     			Arrays.asList(studentAttendancesAbsent);
 		
-     	//URI get student attendances
+     	// URI get student attendances
      	String uri3 ="http://localhost:8080/examapp/api/studentattendances/presents";
      			
-     	//get list student attendances from web service
+     	// get list student attendances from web service
      	RestTemplate restTemplatePresent = new RestTemplate();
      	ResponseEntity<StudentAttendance[]> responsePresent = 
      			restTemplatePresent.getForEntity(uri3, StudentAttendance[].class);
      			
-     	//Parse JSON data to array of object
+     	// Parse JSON data to array of object
      	StudentAttendance studentAttendancesPresent[]=responsePresent.getBody();
 
-     	//Parse array to a list object
-     	List<StudentAttendance> studentAttendancesPresentList = Arrays.asList(studentAttendancesPresent);
+     	// Parse array to a list object
+     	List<StudentAttendance> studentAttendancesPresentList = 
+     			Arrays.asList(studentAttendancesPresent);
      			
-		//Attach list to model as attribute
+		// Attach list to model as attribute
 		model.addAttribute("studentAttendances",studentAttendancesList);
-
 		model.addAttribute("studentAttendancesAbsent",studentAttendancesAbsentList);
-		
 		model.addAttribute("studentAttendancesPresent",studentAttendancesPresentList);
+		
 		return "studentattendances";
 	}
 	
@@ -86,25 +86,31 @@ public class StudentAttendanceMenuController {
 	 * @return
 	 */
 	@RequestMapping("/studentattendance/save")
-	public String updateStudentAttendance(@ModelAttribute StudentAttendance studentAttendance) {
+	public String updateStudentAttendance
+	(@ModelAttribute StudentAttendance studentAttendance) {
+		
 		//Create new RestTmplate
 		RestTemplate restTemplate = new RestTemplate();
 		
 		//Create request Body
-		HttpEntity<StudentAttendance> request = new HttpEntity<StudentAttendance>(studentAttendance);
+		HttpEntity<StudentAttendance> request = 
+				new HttpEntity<StudentAttendance>(studentAttendance);
 		
 		String studentAttendanceResponse ="";
 		
-		if(studentAttendance.getAttendance_ID()>0) {
+		if(studentAttendance.getAttendanceId()>0) {
 			//block update an new student attendances
 			//send req as PUT
-			restTemplate.put("http://localhost:8080/examapp/api/studentattendances", request, StudentAttendance.class);
+			restTemplate.put("http://localhost:8080/examapp/api/studentattendances", 
+					request, StudentAttendance.class);
 			
 		}else {
 			//block add an new student attendances
 			//send req as PUT
 
-			studentAttendanceResponse = restTemplate.postForObject("http://localhost:8080/examapp/api/studentattendances", request, String.class);
+			studentAttendanceResponse = restTemplate.postForObject
+					("http://localhost:8080/examapp/api/studentattendances", 
+							request, String.class);
 		}
 		System.out.println(studentAttendanceResponse);
 		
@@ -119,16 +125,17 @@ public class StudentAttendanceMenuController {
 	 * @param model
 	 * @return
 	 */
-	@GetMapping("/studentattendance/{attendance_ID}")
-	public String getAttedance(@PathVariable Integer attendance_ID, Model model) {
+	@GetMapping("/studentattendance/{attendanceId}")
+	public String getAttedance(@PathVariable Integer attendanceId, Model model) {
+		
 		String pageTitle ="New Student Attendance";
 		StudentAttendance studentAttendance = new StudentAttendance();
 		
 		//this block get an order type to be updated
-		if(attendance_ID>0) {
+		if(attendanceId>0) {
 			
 			//generate new URI and append attendance_ID to it
-			String uri= "http://localhost:8080/examapp/api/studentattendances"+"/"+attendance_ID;
+			String uri= "http://localhost:8080/examapp/api/studentattendances"+"/"+attendanceId;
 			
 			//Get an order type form the web service
 			RestTemplate restTemplate = new RestTemplate();
@@ -152,15 +159,15 @@ public class StudentAttendanceMenuController {
 	 * @param attendance_ID
 	 * @return
 	 */
-	@RequestMapping("/studentattendance/delete/{attendance_ID}")
-	public String deleteStudentAttendance(@PathVariable Integer attendance_ID) {
+	@RequestMapping("/studentattendance/delete/{attendanceId}")
+	public String deleteStudentAttendance(@PathVariable Integer attendanceId) {
 		
 		//generate new URI,similar to the mapping in StudentAttendanceRESTController
-		String uri = "http://localhost:8080/examapp/api/studentattendances" +"/{attendance_ID}";
+		String uri = "http://localhost:8080/examapp/api/studentattendances" +"/{attendanceId}";
 		
 		//send a delete req and attach value of attendanceID into URI
 		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.delete(uri,Map.of("attendance_ID", Integer.toString(attendance_ID)));
+		restTemplate.delete(uri,Map.of("attendanceId", Integer.toString(attendanceId)));
 		
 		return "redirect:/studentattendance/list";
 	}

@@ -16,12 +16,10 @@ import org.springframework.http.ResponseEntity;
 import my.edu.utem.ftmk.ProjectDAD.examapp.model.StudentAttendance;
 import my.edu.utem.ftmk.ProjectDAD.examapp.repository.StudentAttendanceRepository;
 
-/*CREATE BY GROUP 18
- * B032120052 - Umairah
- * B032120025 - Imran
- * B032120040 - Syazwina
-*/
-
+/**
+ * @author user
+ *
+ */
 @RestController
 @RequestMapping("/api/studentattendances")
 public class StudentAttendanceRESTController {
@@ -30,63 +28,53 @@ public class StudentAttendanceRESTController {
 	private StudentAttendanceRepository studentAttendanceRepository;
 	
 	@GetMapping
-	public List<StudentAttendance> getStudentAttendances()
-	{
+	public List<StudentAttendance> getStudentAttendances(){
 		return studentAttendanceRepository.findAll();
 		
 	}
 	
-	//retrieve student attendance details
-	@GetMapping("{attendance_ID}")
-	public StudentAttendance getStudentAttendance(@PathVariable long attendance_ID)
-	{
-		StudentAttendance studentAttendance  = studentAttendanceRepository.findById(attendance_ID).get();
-		
+	// retrieve student attendance details
+	@GetMapping("{attendanceId}")
+	public StudentAttendance getStudentAttendance(@PathVariable long attendanceId){
+		StudentAttendance studentAttendance  = studentAttendanceRepository.
+				findById(attendanceId).get();
 		return studentAttendance;
 	}
-	
-//	//Retrieves attendance records by exam ID from the attendance repository.
-//
-//    @GetMapping("/studentattendances/{exam_code}")
-//    public List<StudentAttendance> getAttendancesByExamCode(@PathVariable int exam_code) {
-//
-//        return studentAttendanceRepository.findByExaminationExamCode(exam_code);
-//
-//    }
-//	
-	//insert student Attendance
+
+	// insert student Attendance
 	@PostMapping
-	public StudentAttendance insertStudentAttendance(@RequestBody StudentAttendance studentAttendance)
-	{
+	public StudentAttendance insertStudentAttendance
+	(@RequestBody StudentAttendance studentAttendance){
+		
 		return studentAttendanceRepository.save(studentAttendance);
 	}
 	
-	//update student Attendance
+	// update student Attendance
 	@PutMapping
-	public StudentAttendance updateStudentAttendance(@RequestBody StudentAttendance studentAttendance)
-	{
+	public StudentAttendance updateStudentAttendance
+	(@RequestBody StudentAttendance studentAttendance){
+		
 		return studentAttendanceRepository.save(studentAttendance);
 	}
 	
-	//delete student Attendance
-	@DeleteMapping("{attendance_ID}")
-	public ResponseEntity<HttpStatus> deleteStudentAttendance(@PathVariable long attendance_ID)
-	{
-		studentAttendanceRepository.deleteById(attendance_ID);
+	// delete student Attendance
+	@DeleteMapping("{attendanceId}")
+	public ResponseEntity<HttpStatus> deleteStudentAttendance
+	(@PathVariable long attendanceId){
+		
+		studentAttendanceRepository.deleteById(attendanceId);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	//retrieve student attendance details
+	// retrieve student attendance details
 	@GetMapping("/absents")
-	public List<StudentAttendance> getAttendAbsent()
-	{
+	public List<StudentAttendance> getAttendAbsent(){
 		return studentAttendanceRepository.selectCustomByCode();
 	}
 	
-	//retrieve student attendance details
+	// retrieve student attendance details
 	@GetMapping("/presents")
-	public List<StudentAttendance> getAttendPresents()
-	{
+	public List<StudentAttendance> getAttendPresents(){
 		return studentAttendanceRepository.selectCustomByCodePresent();
 	}
 
