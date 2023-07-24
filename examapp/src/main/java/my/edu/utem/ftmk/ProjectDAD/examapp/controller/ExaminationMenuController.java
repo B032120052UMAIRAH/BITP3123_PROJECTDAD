@@ -14,19 +14,29 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.model.Examination;
 /**
  * This Menu Controller Class for List Examination
  * 
- * @author Syazwina
+ * @author Imran
  */
 
 @Controller
 public class ExaminationMenuController {
 	
+	
+	/**
+	 * The method is annotated with @GetMapping("/exam/list"), 
+	 * indicating that it handles GET requests to the "/exam/list" 
+	 * endpoint.
+	 * 
+	 * @param model
+	 * @return
+	 */
+	
 	@GetMapping("/exam/list")
 	public String getExamination(Model model){
 		
-		// URI get order types
+		// URI get examination
 		String uri ="http://localhost:8080/examapp/api/examinations";
 		
-		// get list order types from web service
+		// get list examination from web service
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Examination[]> response = 
 				restTemplate.getForEntity(uri, Examination[].class);

@@ -18,19 +18,27 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.model.StudentAttendance;
 /**
  * This Menu Controller Class for Student Attendance
  * 
- * @author Umairah
+ * @author Umairah 
  *
  */
 @Controller
 public class StudentAttendanceMenuController {
 	
+	/**
+	 * The method is annotated with @GetMapping("/studentattendance/list"), 
+	 * indicating that it handles GET requests to the "/studentattendance/list" 
+	 * endpoint.
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/studentattendance/list")
 	public String getStudentAttendances(Model model){
 		
-		// URI get order types
+		// URI get student attendances
 		String uri1 ="http://localhost:8080/examapp/api/studentattendances";
 		
-		// get list order types from web service
+		// get list student attendances from web service
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<StudentAttendance[]> response = 
 				restTemplate.getForEntity(uri1, StudentAttendance[].class);
@@ -42,10 +50,10 @@ public class StudentAttendanceMenuController {
 		List<StudentAttendance> studentAttendancesList = 
 				Arrays.asList(studentAttendances);
 		
-		// URI get student attendances
+		// URI get absent student attendances
 		String uri2 ="http://localhost:8080/examapp/api/studentattendances/absents";
 		
-		// get list order types from web service
+		// get list of absent student attendances from web service
 		RestTemplate restTemplateAbsent = new RestTemplate();
 		ResponseEntity<StudentAttendance[]> responseAbsent = 
 				restTemplateAbsent.getForEntity(uri2, StudentAttendance[].class);
@@ -57,7 +65,7 @@ public class StudentAttendanceMenuController {
      	List<StudentAttendance> studentAttendancesAbsentList = 
      			Arrays.asList(studentAttendancesAbsent);
 		
-     	// URI get student attendances
+     	// URI get present student attendances
      	String uri3 ="http://localhost:8080/examapp/api/studentattendances/presents";
      			
      	// get list student attendances from web service

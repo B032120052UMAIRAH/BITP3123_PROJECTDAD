@@ -8,13 +8,16 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 /**
- * @author user
+ * This model class for Student Table 
+ * 
+ * @author Umairah
  *
  */
 @Entity
 @Table(name = "student")
 public class Student {
 
+	//Primary Key
 	@Id
 	@Column(name = "matricNo")
 	private String matricNo;

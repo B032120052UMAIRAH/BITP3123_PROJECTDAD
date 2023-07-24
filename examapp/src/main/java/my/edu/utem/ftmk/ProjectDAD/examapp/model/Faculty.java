@@ -6,13 +6,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 /**
- * @author user
+ * This model class for Faculty Table 
+ * 
+ * @author Imran
  *
  */
 @Entity
 @Table(name = "faculty")
 public class Faculty {
 
+	//Primary Key
 	@Id
 	@Column(name = "facultyCode")
 	private String facultyCode;

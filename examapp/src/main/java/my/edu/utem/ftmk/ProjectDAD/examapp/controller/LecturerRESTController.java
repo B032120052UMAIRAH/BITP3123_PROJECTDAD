@@ -17,7 +17,9 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.model.Lecturer;
 import my.edu.utem.ftmk.ProjectDAD.examapp.repository.LecturerRepository;
 
 /**
- * @author user
+ * This REST Controller Class for Lecturer
+ * 
+ * @author Imran 
  *
  */
 @RestController
@@ -26,34 +28,58 @@ public class LecturerRESTController {
 
 	@Autowired
 	private LecturerRepository lecturerRepository;
-	
+	/*
+	 * Find all lecturer
+	 */
 	@GetMapping
 	public List<Lecturer> getLecturers(){
 		return lecturerRepository.findAll();
 		
 	}
 	
-	// retrieve lecturer details
+	
+	/**
+	 * Retrieve lecturer details
+	 * 
+	 * @param lecturerId
+	 * @return
+	 */
 	@GetMapping("{lecturerId}")
 	public Lecturer getLecturer(@PathVariable String lecturerId){
 		Lecturer lecturer  = lecturerRepository.findById(lecturerId).get();
 		return lecturer;
 	}
 	
-	// insert lecturer
+
+	/**
+	 * Insert lecturer details
+	 * 
+	 * @param lecturer
+	 * @return
+	 */
 	@PostMapping
 	public Lecturer insertLecturer(@RequestBody Lecturer lecturer)
 	{
 		return lecturerRepository.save(lecturer);
 	}
 	
-	// update lecturer
+	/**
+	 * Update lecturer details
+	 * 
+	 * @param lecturer
+	 * @return
+	 */
 	@PutMapping
 	public Lecturer updateLecturer(@RequestBody Lecturer lecturer){
 		return lecturerRepository.save(lecturer);
 	}
 	
-	// delete lecturer
+	/**
+	 * Delete lecturer details
+	 * 
+	 * @param lecturerId
+	 * @return
+	 */
 	@DeleteMapping("{lecturerId}")
 	public ResponseEntity<HttpStatus> deleteLecturer(@PathVariable String lecturerId){
 		lecturerRepository.deleteById(lecturerId);

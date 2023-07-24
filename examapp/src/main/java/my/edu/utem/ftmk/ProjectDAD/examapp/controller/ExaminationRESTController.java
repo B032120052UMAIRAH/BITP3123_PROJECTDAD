@@ -19,7 +19,9 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.repository.ExaminationRepository;
 
 
 /**
- * @author user
+ * This REST Controller Class for Examination
+ * 
+ * @author Imran 
  *
  */
 @RestController
@@ -28,33 +30,58 @@ public class ExaminationRESTController {
 
 	@Autowired
 	private ExaminationRepository examRepository;
-	
+	/*
+	 * Find all examination
+	 */
 	@GetMapping
 	public List<Examination> getExams(){
 		return examRepository.findAll();
 		
 	}
 	
-	// retrieve exam schedule details
+	/**
+	 * Retrieve exam details
+	 * 
+	 * @param examCode
+	 * @return
+	 */
 	@GetMapping("{examCode}")
 	public Examination getExam(@PathVariable long examCode){
 		Examination exam  = examRepository.findById(examCode).get();
 		return exam;
 	}
 	
-	// insert exam
+	
+	/**
+	 * Insert exam details
+	 * 
+	 * @param exam
+	 * @return
+	 */
 	@PostMapping
 	public Examination insertExam(@RequestBody Examination exam){
 		return examRepository.save(exam);
 	}
 	
-	// update exam
+	
+	/**
+	 * Update exam details
+	 * 
+	 * @param exam
+	 * @return
+	 */
 	@PutMapping
 	public Examination updateExam(@RequestBody Examination exam){
 		return examRepository.save(exam);
 	}
 	
-	// delete exam
+	
+	/**
+	 * Delete exam details 
+	 * 
+	 * @param examCode
+	 * @return
+	 */
 	@DeleteMapping("{examCode}")
 	public ResponseEntity<HttpStatus> deleteExamSchedule(@PathVariable long examCode){
 		examRepository.deleteById(examCode);

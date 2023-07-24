@@ -16,9 +16,10 @@ import org.springframework.http.ResponseEntity;
 import my.edu.utem.ftmk.ProjectDAD.examapp.model.Subject;
 import my.edu.utem.ftmk.ProjectDAD.examapp.repository.SubjectRepository;
 
-
 /**
- * @author user
+ * This REST Controller Class for Subject
+ * 
+ * @author Syazwina 
  *
  */
 @RestController
@@ -27,32 +28,54 @@ public class SubjectRESTController {
 	
 	@Autowired
 	private SubjectRepository subjectRepository;
-	
+	/*
+	 * Find all subject  
+	 */
 	@GetMapping
 	public List<Subject> getSubjects(){
 		return subjectRepository.findAll();
 	}
 	
-	// retrieve subject details
+	/**
+	 * Retrieve subject details
+	 * 
+	 * @param subjectCode
+	 * @return
+	 */
 	@GetMapping("{subjectCode}")
 	public Subject getSubject(@PathVariable String subjectCode){
 		Subject subject  = subjectRepository.findById(subjectCode).get();
 		return subject;
 	}
 	
-	// insert subject 
+	/**
+	 * Insert subject details
+	 * 
+	 * @param subject
+	 * @return
+	 */
 	@PostMapping
 	public Subject insertSubject(@RequestBody Subject subject){
 		return subjectRepository.save(subject);
 	}
 	
-	// update subject 
+	/**
+	 * Update subject details
+	 * 
+	 * @param subject
+	 * @return
+	 */
 	@PutMapping
 	public Subject updateSubject(@RequestBody Subject subject){
 		return subjectRepository.save(subject);
 	}
 	
-	// delete subject by ID as subject_code 
+	/**
+	 * Delete subject details
+	 * 
+	 * @param subjectCode
+	 * @return
+	 */
 	@DeleteMapping("{subjectCode}")
 	public ResponseEntity<HttpStatus> deleteSubject(@PathVariable String subjectCode){
 		subjectRepository.deleteById(subjectCode);

@@ -7,17 +7,19 @@ import jakarta.persistence.Table;
 
 
 /**
- * @author user
+ * This model class for Lecturer Table 
+ * 
+ * @author Syazwina
  *
  */
 @Entity
 @Table(name = "lecturer")
 public class Lecturer {
 	
+	//Primary Key
 	@Id
 	@Column(name = "lecturerId")
 	private String lecturerId;
-	// lecturerId
 	
 	@Column(name = "name")
 	private String name;

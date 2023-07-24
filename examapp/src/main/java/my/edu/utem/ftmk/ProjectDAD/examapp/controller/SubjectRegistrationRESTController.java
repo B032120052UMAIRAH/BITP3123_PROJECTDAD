@@ -19,7 +19,9 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.repository.SubjectRegistrationReposit
 
 
 /**
- * @author user
+ * This REST Controller Class for Subject Registration 
+ * 
+ * @author Umairah  
  *
  */
 @RestController
@@ -28,14 +30,20 @@ public class SubjectRegistrationRESTController {
 	
 	@Autowired
 	private SubjectRegistrationRepository subjectRegistrationRepository;
-	
-
+	/*
+	 * Find all subject registration 
+	 */
 	@GetMapping
 	public List<SubjectRegistration> getSubjectRegistrations(){
 		return subjectRegistrationRepository.findAll();
 	}
 	
-	// retrieve attendance details
+	/**
+	 * Retrieve subject registration details
+	 * 
+	 * @param subjRegId
+	 * @return
+	 */
 	@GetMapping("{subjRegId}")
 	public SubjectRegistration getAttendance(@PathVariable long subjRegId){
 		SubjectRegistration subjectRegistration  = 
@@ -44,7 +52,13 @@ public class SubjectRegistrationRESTController {
 		return subjectRegistration;
 	}
 	
-	// insert attendance
+	
+	/**
+	 * Insert subject registration details
+	 * 
+	 * @param subjectRegistration
+	 * @return
+	 */
 	@PostMapping
 	public SubjectRegistration insertSubjectRegistration
 	(@RequestBody SubjectRegistration subjectRegistration){
@@ -52,7 +66,12 @@ public class SubjectRegistrationRESTController {
 		return subjectRegistrationRepository.save(subjectRegistration);
 	}
 	
-	// update attendance
+	/**
+	 * Update subject registration details
+	 * 
+	 * @param subjectRegistration
+	 * @return
+	 */
 	@PutMapping
 	public SubjectRegistration updateSubjectRegistration
 	(@RequestBody SubjectRegistration subjectRegistration){
@@ -60,7 +79,12 @@ public class SubjectRegistrationRESTController {
 		return subjectRegistrationRepository.save(subjectRegistration);
 	}
 	
-	// delete attendance
+	/**
+	 * Delete subject registration details
+	 * 
+	 * @param subjRegId
+	 * @return
+	 */
 	@DeleteMapping("{subjRegId}")
 	public ResponseEntity<HttpStatus> deleteSubjectRegistration
 	(@PathVariable long subjRegId){

@@ -11,13 +11,16 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 /**
- * @author user
+ * This model class for Examination Table 
+ * 
+ * @author Umairah
  *
  */
 @Entity
 @Table(name ="examination")
 public class Examination {
 	
+	//Primary Key
 	//auto increment for new data
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -12,27 +12,27 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 /**
+ * This model class for Student Attendance Table 
  * 
- * @author user
+ * @author Umairah
  *
  */
 @Entity
 @Table(name = "student_attendance")
 public class StudentAttendance {
 
+	//Primary Key
 	//auto increment for new data
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "attendanceId")
 	private int attendanceId;
-	// attendanceId
 	
 	//FK for TABLE Student 
 	//join the student attendance table and student table
 	@ManyToOne
     @JoinColumn(name="matricNo")
 	private Student matricNo;
-	// matricNo
 	
 	@Column(name = "dateTime")
 	private String dateTime;
@@ -42,7 +42,6 @@ public class StudentAttendance {
 	@ManyToOne
     @JoinColumn(name="examCode")
 	private Examination examCode;
-	// private Examination exam
 	
 	@Column(name = "method")
 	private String method;

@@ -19,7 +19,9 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.repository.AcademicAdvisorRepository;
 
 
 /**
- * @author user
+ * This REST Controller Class for Academic Advisor
+ * 
+ * @author Syazwina 
  *
  */
 @RestController

@@ -26,14 +26,21 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.model.Lecturer;
 
 @Controller
 public class LecturerMenuController {
-
+	/**
+	 * The method is annotated with @GetMapping("/lecturer/list"), 
+	 * indicating that it handles GET requests to the "/lecturer/list" 
+	 * endpoint.
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/lecturer/list")
 	public String getLecturer(Model model){
 		
-		// URI get order types
+		// URI get lecturer
 		String uri ="http://localhost:8080/examapp/api/lecturers";
 		
-		// get list order types from web service
+		// get list lecturer from web service
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Lecturer[]> response = 
 				restTemplate.getForEntity(uri, Lecturer[].class);

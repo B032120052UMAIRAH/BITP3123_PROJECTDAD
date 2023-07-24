@@ -17,7 +17,9 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.model.StudentAttendance;
 import my.edu.utem.ftmk.ProjectDAD.examapp.repository.StudentAttendanceRepository;
 
 /**
- * @author user
+ * This REST Controller Class for Student Attendance
+ * 
+ * @author Umairah  
  *
  */
 @RestController
@@ -26,14 +28,21 @@ public class StudentAttendanceRESTController {
 	
 	@Autowired
 	private StudentAttendanceRepository studentAttendanceRepository;
-	
+	/*
+	 * Find all student attendances
+	 */
 	@GetMapping
 	public List<StudentAttendance> getStudentAttendances(){
 		return studentAttendanceRepository.findAll();
 		
 	}
 	
-	// retrieve student attendance details
+	/**
+	 * Retrieve student attendance details
+	 * 
+	 * @param attendanceId
+	 * @return
+	 */
 	@GetMapping("{attendanceId}")
 	public StudentAttendance getStudentAttendance(@PathVariable long attendanceId){
 		StudentAttendance studentAttendance  = studentAttendanceRepository.
@@ -41,7 +50,12 @@ public class StudentAttendanceRESTController {
 		return studentAttendance;
 	}
 
-	// insert student Attendance
+	/**
+	 * Insert student attendance details
+	 * 
+	 * @param studentAttendance
+	 * @return
+	 */
 	@PostMapping
 	public StudentAttendance insertStudentAttendance
 	(@RequestBody StudentAttendance studentAttendance){
@@ -49,7 +63,12 @@ public class StudentAttendanceRESTController {
 		return studentAttendanceRepository.save(studentAttendance);
 	}
 	
-	// update student Attendance
+	/**
+	 * Update student attendance details
+	 * 
+	 * @param studentAttendance
+	 * @return
+	 */
 	@PutMapping
 	public StudentAttendance updateStudentAttendance
 	(@RequestBody StudentAttendance studentAttendance){
@@ -57,7 +76,12 @@ public class StudentAttendanceRESTController {
 		return studentAttendanceRepository.save(studentAttendance);
 	}
 	
-	// delete student Attendance
+	/**
+	 * Delete student attendance details
+	 * 
+	 * @param attendanceId
+	 * @return
+	 */
 	@DeleteMapping("{attendanceId}")
 	public ResponseEntity<HttpStatus> deleteStudentAttendance
 	(@PathVariable long attendanceId){
@@ -66,13 +90,22 @@ public class StudentAttendanceRESTController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	// retrieve student attendance details
+	
+	/**
+	 * Retrieve absent of student attendance details
+	 * 
+	 * @return
+	 */
 	@GetMapping("/absents")
 	public List<StudentAttendance> getAttendAbsent(){
 		return studentAttendanceRepository.selectCustomByCode();
 	}
 	
-	// retrieve student attendance details
+	/**
+	 * Retrieve present of student attendance details
+	 * 
+	 * @return
+	 */
 	@GetMapping("/presents")
 	public List<StudentAttendance> getAttendPresents(){
 		return studentAttendanceRepository.selectCustomByCodePresent();

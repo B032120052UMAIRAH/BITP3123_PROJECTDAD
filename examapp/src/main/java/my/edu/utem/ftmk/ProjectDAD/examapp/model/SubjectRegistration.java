@@ -11,7 +11,9 @@ import jakarta.persistence.Table;
 
 
 /**
- * @author user
+ * This model class for Subject Registration Table 
+ * 
+ * @author Umairah
  *
  */
 @Entity
@@ -23,6 +25,7 @@ public class SubjectRegistration {
 		// TODO Auto-generated constructor stub
 	}
 
+	//Primary Key
 	//auto increment for new data
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

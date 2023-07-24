@@ -24,13 +24,21 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.model.SubjectRegistration;
 @Controller
 public class SubjectRegistrationMenuController {
 
+	/**
+	 * The method is annotated with @GetMapping("/subjectregistration/list"), 
+	 * indicating that it handles GET requests to the "/subjectregistration/list" 
+	 * endpoint.
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/subjectregistration/list")
 	public String getSubjectRegistrations(Model model){
 		
-		// URI get order types
+		// URI get subject registrations
 		String uri ="http://localhost:8080/examapp/api/subjectregistrations";
 		
-		// get list order types from web service
+		// get list subject registrations from web service
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<SubjectRegistration[]> response = 
 				restTemplate.getForEntity(uri, SubjectRegistration[].class);

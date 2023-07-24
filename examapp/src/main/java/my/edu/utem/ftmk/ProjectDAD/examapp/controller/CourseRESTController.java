@@ -18,7 +18,9 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.model.Course;
 import my.edu.utem.ftmk.ProjectDAD.examapp.repository.CourseRepository;
 
 /**
- * @author user
+ * This REST Controller Class for Course
+ * 
+ * @author Imran 
  *
  */
 @RestController
@@ -27,33 +29,56 @@ public class CourseRESTController{
 
 	@Autowired
 	private CourseRepository courseRepository;
-	
+	/*
+	 * Find all the Course
+	 */	
 	@GetMapping
 	public List<Course> getCourses(){
 		return courseRepository.findAll();
 	}
 	
-	// retrieve course details
+	/**
+	 * Retrieve course details
+	 * 
+	 * @param courseCode
+	 * @return
+	 */
 	@GetMapping("{courseCode}")
 	public Course getCourse(@PathVariable String courseCode){
 		Course course  = courseRepository.findById(courseCode).get();
 		return course;
 	}
 	
-	// insert Course
+
+	/**
+	 * Insert course details
+	 * 
+	 * @param course
+	 * @return
+	 */
 	@PostMapping
 	public Course insertCourse(@RequestBody Course course)
 	{
 		return courseRepository.save(course);
 	}
 	
-	// update Course
+	/**
+	 * Update course details
+	 * 
+	 * @param course
+	 * @return
+	 */
 	@PutMapping
 	public Course updateCourse(@RequestBody Course course){
 		return courseRepository.save(course);
 	}
 	
-	// delete Course
+	/**
+	 * Delete course
+	 * 
+	 * @param courseCode
+	 * @return
+	 */
 	@DeleteMapping("{courseCode}")
 	public ResponseEntity<HttpStatus> deleteCourse(@PathVariable String courseCode){
 		courseRepository.deleteById(courseCode);

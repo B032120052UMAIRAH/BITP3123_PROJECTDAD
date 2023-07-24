@@ -8,7 +8,10 @@ import org.springframework.data.jpa.repository.Query;
 import my.edu.utem.ftmk.ProjectDAD.examapp.model.StudentAttendance;
 
 /**
- * @author user
+ * This repository enable StudentAttendanceRESTController and 
+ * StudentAttendanceMenuController to invoke it for web service.
+ * 
+ * @author Umairah
  *
  */
 public interface StudentAttendanceRepository extends JpaRepository<StudentAttendance, Long> {
@@ -34,19 +37,4 @@ public interface StudentAttendanceRepository extends JpaRepository<StudentAttend
 			nativeQuery=true)
 	public List<StudentAttendance>selectCustomByCodePresent();
 
-//	@Query(value="select a.attendanceId, m.matricNo,m.name, a.dateTime,"
-//			+ " e.examCode, e.venue,e.date,e.time,e.duration, a.method, a.status"
-//			+ " FROM student_attendance a, student m, examination e "
-//			+ " WHERE a.matricNo = m.matricNo AND a.examCode = e.examCode AND a.status LIKE '%absent' ",
-//			nativeQuery=true)
-//	public List<StudentAttendance>selectCustomByCode();
-	
-	/*
-	 * @Query(value="select a.attendanceId, m.matricNo,m.name, a.dateTime, " +
-	 * " e.examCode,e.venue,e.date,e.time,e.duration, a.method, a.status" +
-	 * " FROM student_attendance a, student m, examination e" +
-	 * " WHERE a.matricNo = m.matricNo AND a.examCode = e.examCode AND a.status LIKE '%present' "
-	 * , nativeQuery=true) public
-	 * List<StudentAttendance>selectCustomByCodePresent();
-	 */
 }

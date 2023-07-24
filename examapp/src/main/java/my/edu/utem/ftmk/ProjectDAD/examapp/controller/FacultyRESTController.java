@@ -18,7 +18,9 @@ import my.edu.utem.ftmk.ProjectDAD.examapp.repository.FacultyRepository;
 
 
 /**
- * @author user
+ * This REST Controller Class for Faculty
+ * 
+ * @author Imran 
  *
  */
 @RestController
@@ -27,32 +29,55 @@ public class FacultyRESTController {
 
 	@Autowired
 	private FacultyRepository facultyRepository;
-	
+	/*
+	 * Find all faculty
+	 */
 	@GetMapping
 	public List<Faculty> getFacultys(){
 		return facultyRepository.findAll();
 	}
 	
-	// retrieve faculty details
+	/**
+	 * Retrieve faculty details
+	 * 
+	 * @param facultyCode
+	 * @return
+	 */
 	@GetMapping("{facultyCode}")
 	public Faculty getFaculty(@PathVariable String facultyCode){
 		Faculty faculty  = facultyRepository.findById(facultyCode).get();
 		return faculty;
 	}
 	
-	// insert faculty
+	/**
+	 * Insert faculty details
+	 * 
+	 * @param faculty
+	 * @return
+	 */
 	@PostMapping
 	public Faculty insertFaculty(@RequestBody Faculty faculty){
 		return facultyRepository.save(faculty);
 	}
 	
-	// update faculty 
+	/**
+	 * Update faculty details
+	 * 
+	 * @param faculty
+	 * @return
+	 */
 	@PutMapping
 	public Faculty updateFaculty(@RequestBody Faculty faculty){
 		return facultyRepository.save(faculty);
 	}
 	
-	// delete faculty using ID (faculty code)
+	
+	/**
+	 * Delete faculty details
+	 * 
+	 * @param facultyCode
+	 * @return
+	 */
 	@DeleteMapping("{facultyCode}")
 	public ResponseEntity<HttpStatus> deleteFaculty(@PathVariable String facultyCode){
 		facultyRepository.deleteById(facultyCode);

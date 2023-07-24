@@ -22,7 +22,7 @@ public class AcademicAdvisorMenuController {
 	
 	
 	/**
-	 * 	The method is annotated with @GetMapping("/academicadvisor/list"), 
+	 * The method is annotated with @GetMapping("/academicadvisor/list"), 
 	 * indicating that it handles GET requests to the "/academicadvisor/list" 
 	 * endpoint.
 	 * 
